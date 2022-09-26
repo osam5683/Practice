@@ -3,7 +3,7 @@ import express from "express";
 //Initiate express
 const app = express();
 
-//Allot port numer
+//Allot port number
 const port = 5050;
 
 //checks if the body is coming in valid json format
