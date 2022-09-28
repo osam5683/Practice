@@ -1,11 +1,11 @@
 import Header from "./Header";
 
-function Register() {
-    return (
+function Register(){
+    return(
         <>
-            <Header />
+        <Header />
         </>
     )
-}
 
+}
 export default Register;
