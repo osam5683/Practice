@@ -1,19 +1,17 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import config from "config";
-// import addbookvalidations, { errormiddleware } from "../../middleware/validation/index.js";
-import { userRegisterValidatorRules,errorMiddleware,addbookvalidations} from "../../middleware/validation/index.js"
 
 
 import randomString from "../../utils/randomString.js";
 //IMPORT Models
 
-import Users from "../../models/users/index.js";
+// import Users from "../../models/Users/index.js";
 
-
+import Users from "../../controllers/user/index.js";
 //IMport Validations
 
-// import { userRegisterValidatorRules } from "../../middleware/validation/index.js";
+import { userRegisterValidatorRules, errorMiddleware, userLoginValidatorRules ,  addbookvalidations } from "../../middleware/validation/index.js";
 
 const router = express.Router();
 
@@ -29,10 +27,9 @@ Validation :
         Firstname length not more than 25 characters
         password & password2 should match, but save password field only.
  Description: User Signup
-
 */
 
-router.post("/register", userRegisterValidatorRules(), errorMiddleware, async (req, res) => {
+router.post("/register", userRegisterValidatorRules(),userLoginValidatorRules(), errorMiddleware, async (req, res) => {
 
     try {
 
@@ -57,14 +54,28 @@ router.post("/register", userRegisterValidatorRules(), errorMiddleware, async (r
         res.status(500).json({ "error": "Internal Server Error" })
     }
 })
-router.post("/book",addbookvalidations(),errorMiddleware,async(req,res)=>{
+
+router.post("/book",addbookvalidations(),errorMiddleware, async(req,res)=>{
+try {
+
+    let book=new book(req.body);
+    await book.save();
+    res.status(200).json({success: "Book succesfully added"});
+    
+} catch (error) {
+    console.error(error);
+    res.status(500).json({ "error": "Internal Server Error" })
+}
+})
+
+router.get("/book", async(req,res)=>{
     try {
-        let book = await book.findOne({});
+        let book=await book.findOne({});
         res.status(200).json({success: "Book found"});
         
     } catch (error) {
         console.error(error);
-        res.status(500).json({ "error": "Internal Server Error"});
+        res.status(500).json({ "error": " Error" })
         
     }
 })
