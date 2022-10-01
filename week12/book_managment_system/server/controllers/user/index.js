@@ -6,12 +6,12 @@ import config from "config";
 import randomString from "../../utils/randomString.js";
 //IMPORT Models
 
-// import Users from "../../models/Users/index.js";
+import Users from "../../models/Users/index.js";
+import Admin from "../../models/Admin/index.js";
 
-import Users from "../../controllers/user/index.js";
 //IMport Validations
 
-import { userRegisterValidatorRules, errorMiddleware, userLoginValidatorRules ,  addbookvalidations } from "../../middleware/validation/index.js";
+import { userRegisterValidatorRules, userLoginValidatorRules, errorMiddleware } from "../../middlewares/validation/index.js";
 
 const router = express.Router();
 
@@ -27,9 +27,10 @@ Validation :
         Firstname length not more than 25 characters
         password & password2 should match, but save password field only.
  Description: User Signup
+
 */
 
-router.post("/register", userRegisterValidatorRules(),userLoginValidatorRules(), errorMiddleware, async (req, res) => {
+router.post("/register", userRegisterValidatorRules(), errorMiddleware, async (req, res) => {
 
     try {
 
@@ -38,16 +39,20 @@ router.post("/register", userRegisterValidatorRules(),userLoginValidatorRules(),
         //Avoid Double Registration
         let userData = await Users.findOne({ email });
         if (userData) {
-            res.status(409).json({ "error": "Email Already Registered" })
+            return res.status(409).json({ "error": "Email Already Registered" })
+        }
+        userData = await Admin.findOne({ email });
+        if (userData) {
+            return res.status(409).json({ "error": "Email Already Registered" })
         }
 
-        password = await bcrypt.hash(password, 12);
+        req.body.password = await bcrypt.hash(password, 12);
         const user = new Users(req.body);
 
         user.userverifytoken = randomString(15);
         await user.save();
 
-        res.status(200).json({ "success": "Register is UP" })
+        res.status(200).json({ "success": "User Registered Successfully" })
 
     } catch (error) {
         console.error(error);
@@ -55,29 +60,5 @@ router.post("/register", userRegisterValidatorRules(),userLoginValidatorRules(),
     }
 })
 
-router.post("/book",addbookvalidations(),errorMiddleware, async(req,res)=>{
-try {
-
-    let book=new book(req.body);
-    await book.save();
-    res.status(200).json({success: "Book succesfully added"});
-    
-} catch (error) {
-    console.error(error);
-    res.status(500).json({ "error": "Internal Server Error" })
-}
-})
-
-router.get("/book", async(req,res)=>{
-    try {
-        let book=await book.findOne({});
-        res.status(200).json({success: "Book found"});
-        
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ "error": " Error" })
-        
-    }
-})
 
 export default router;

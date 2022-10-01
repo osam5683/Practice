@@ -1,12 +1,12 @@
-import mongoose, { connect } from "mongoose";
-
-async function connectDB() {
+ import mongoose from "mongoose";
+ import config from "config";
+ async function connedtionDB(){
     try {
-        await mongoose.connect("mongodb+srv://sabiya:mymongodbaccount@sabiya.28lg5jn.mongodb.net/book-management")
-        console.log("Mongo DB is Connected");
+        await mongoose.connect(config.get("DBI_URI"))
+        console.log("Mongo DB is connected");
     } catch (error) {
         console.log(error);
         
     }
-    connectDB();
-}
+ }
+ connectDB();
