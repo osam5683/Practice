@@ -1,0 +1,22 @@
+[
+    {
+        "user_id": "2mlcbYQ3mID0PMnY",
+        "firstname": "akheel",
+        "lastname": "ossama",
+        "email": "akheelossama786@gmail.com",
+        "password": "$2b$12$6Blobui5sHG1HjQ5r7GV3.hkTRofgY0w0dBRZqYuWRnP6J5s4MQ3.",
+        "address": "mehdipatnam",
+        "phone": "9100280872",
+        "tasks": []
+    },
+    {
+        "user_id": "IQdjsowo8xbMoESy",
+        "firstname": "akheel",
+        "lastname": "ossama",
+        "email": "akheelossama76@gmail.com",
+        "password": "$2b$12$/lNa20DqXoE9n5kO9E5S7epAndOzsIUFkHR4sjFy0skQUvzOVZlRe",
+        "address": "mehdipatnam",
+        "phone": "910028087",
+        "tasks": []
+    }
+]

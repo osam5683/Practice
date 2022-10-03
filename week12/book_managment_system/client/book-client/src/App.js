@@ -9,7 +9,9 @@ import {
 import Main from './components/Main';
 import Register from './components/Register';
 import Login from './components/Login';
-// import Navbar from './components/Navbar'; 
+import AdminDashboard from './components/AdminDashboard';
+import UserDashboard from './components/UserDashboard';
+import PrivateRoutes from './components/PrivateRoutes';
 
 function App() {
 
@@ -23,20 +25,22 @@ function App() {
       setAlert(null);
     }, 5000)
   }
-
-
-
   return (
     <>
-
       <Routes>
-
         <Route path="/" element={<Main />} />
         <Route path="/register" element={<Register
           alert={alert}
           showAlert={showAlert}
         />}></Route>
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login
+          alert={alert}
+          showAlert={showAlert}
+        />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/user" element={<UserDashboard />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Route>
       </Routes>
     </>
   );
