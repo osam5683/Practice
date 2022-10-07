@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <div className="footer">
-            <h2>Footer</h2>
+            <h5>&copy; Copyright Code For India. All rights reserved.</h5>
         </div>
     )
 }
