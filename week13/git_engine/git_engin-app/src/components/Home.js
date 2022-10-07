@@ -12,7 +12,7 @@ function Home({ users, loading }) {
                         <div className="side" key={i}>
                             <img src={user.avatar_url} height={200} alt="profilepic" />
                             <h2>{user.login}</h2>
-                            <Link to="/">Click Profile</Link>;
+                            <Link to="/">Click Profile</Link>,
                         </div>
                     ))}
                 </div>
