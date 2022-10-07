@@ -6,7 +6,7 @@ function Home({ users, loading }) {
         <>
            
             <center>
-                {loading && <Loading />}
+                {loading && <Loading />};
                 <div className="row">
                     {users.map((user, i) => (
                         <div className="side" key={i}>
