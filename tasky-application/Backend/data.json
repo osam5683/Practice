@@ -18,5 +18,15 @@
         "address": "mehdipatnam",
         "phone": "910028087",
         "tasks": []
+    },
+    {
+        "user_id": "MJmufrjL7Ir0s12a",
+        "firstname": "akheel",
+        "lastname": "ossama",
+        "email": "akheelossama776@gmail.com",
+        "password": "$2b$12$onvx1BKpN3mXBh6Pl88zbOFazHvMV2EiQ4/UCJ2JXhyM0FDKx61.q",
+        "address": "mehdipatnam",
+        "phone": "910098087",
+        "tasks": []
     }
 ]
