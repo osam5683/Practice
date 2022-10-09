@@ -411,7 +411,7 @@ app.put("/api/task/:task_id", async (req, res) => {
       });
       // console.log(i);
     });
-    await fs.writeFile("data.json", JSON.stringify(fileData));
+    await fs.writeFile("data.json", JSON.stringify(fileData))
     res.status(200).json({ success: "Task Was updated Successfully" });
   } catch (error) {
     console.error(error);
