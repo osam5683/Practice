@@ -17,7 +17,7 @@ function Navbar() {
         <>
             <header className='navbar'>
                 {/* <div className='navbar__title navbar__item'>Cutco</div> */}
-                <Link to="/" id="logo" className='navbar_title '>my-tasky</Link>
+                <Link to="/" id="logo" className='navbar_title '>MY-TASKY</Link>
                 {/* <div className='navbar__item'>About Us</div>
         <div className='navbar__item'>Contact</div>
         <div className='navbar__item'>Help</div> 

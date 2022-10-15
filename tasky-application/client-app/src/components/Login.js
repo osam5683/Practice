@@ -1,5 +1,5 @@
 import React from 'react'
-import giffi from "./giffi.gif"
+import dummy from "./dummy.png"
 import { Link } from "react-router-dom"
 
 
@@ -19,7 +19,7 @@ function Login() {
 
                     </form>
                 </div>
-                <img className="giffi" src={giffi} alt="task" />
+                <img className="giffi" src={dummy} alt="task" />
             </div>
         </>
     )

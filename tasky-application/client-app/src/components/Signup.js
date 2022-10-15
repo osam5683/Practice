@@ -1,5 +1,5 @@
 import React from 'react'
-import dummy from "./dummy.gif"
+import dummy from "./dummy.png"
 import { Link } from "react-router-dom"
 
 function Signup() {
@@ -8,12 +8,12 @@ function Signup() {
             <div className='flex2-box' >
                 <div>
                     <form className='reg-form'>
-                        <h1 style={{ color: "#006E7F", fontFamily: "cursive", marginTop: "-10px" }}>Registration</h1>
+                        <h1 style={{ color: "#006E7F", fontFamily:"", marginTop: "-10px" }}>Registration</h1>
                         <input type="text" id="fname" name="fname" placeholder='First name' required /><br />
 
                         <input type="text" id="lname" name="lname" placeholder='Last name' required /><br />
 
-                        <input type="email" id="email" name="email" placeholder='example@email.com' required /><br />
+                        <input type="email" id="email" name="email" placeholder='email' required /><br />
 
                         <input type="tel" id="phone" name="phone" placeholder='Phone number' required /><br />
 
@@ -21,7 +21,7 @@ function Signup() {
 
                         <input type="password" id="password2" name="password2" placeholder='Conform Password' required /><br />
                         <input type="button" id="submit" name="submit" value="SIGN UP" required /><br />
-                        <Link to="/Login" id="redirect-to">Already have a account? Login</Link>
+                        <Link to="/Login" id="redirect-to">Already have an account? Login</Link>
 
                     </form>
                 </div>

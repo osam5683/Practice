@@ -1,25 +1,25 @@
-
+import React from 'react'
+import Navbar from './components/Navbar.js';
+import Body from './components/Body.js';
 import './App.css';
-
+import { Routes, Route } from "react-router-dom"
+import Signup from './components/Signup.js';
+import Login from './components/Login.js';
+import Dashbord from './components/Dashboard.js';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+       <Navbar />
+      <Routes>
+     
+        <Route path="/" element={<Body />} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashbord />} />
+      </Routes>
+    </>
   );
+
 }
 
 export default App;
