@@ -9,8 +9,8 @@ function Body() {
             <div className="content" style={{ backgroundColor: "skyblue" }}>
                 <div className='flex-box'>
                     <h1 className='tag'>MANAGE YOUR TASKS FROM ANYWHERE.<br />
-                        <div className='tag-sub' style={{}}>MY-TASKY is a cloud-based task management application.
-                            It allows users to manage their tasks from a smartphone, tablet and computer.
+                        <div className='tag-sub' style={{}}>TASKY is a cloud-based task management application.
+                            It allows users to manage their tasks with a smartphones, tabs and computers.
                             And send reminders through  E-mails and SMS.</div></h1>
                     <img className='dummy' src={dummy} alt="task image" />
                 </div>
