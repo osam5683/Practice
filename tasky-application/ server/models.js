@@ -1,22 +1,39 @@
 import mongoose from "mongoose";
-import taskModel from "./taskmodel.js";
 
 const Schema = mongoose.Schema;
+
+const tasks = new Schema({
+  task_name: {
+    type: String,
+    required: true,
+  },
+  deadline: {
+    type: Date,
+    required: true,
+  },
+  isCompleted: {
+    type: Boolean,
+    default: false,
+  },
+  reminders: {
+    type: [Date],
+  },
+});
 
 const userSchema = new Schema({
   firstname: {
     type: String,
     required: true,
+    maxlength: 25,
+    minlength: 2,
   },
   lastname: {
     type: String,
     required: true,
+    maxlength: 25,
+    minlength: 2,
   },
   password: {
-    type: String,
-    required: true,
-  },
-  password2: {
     type: String,
     required: true,
   },
@@ -32,12 +49,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  // tasks: [{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "userModel"
-  // }]
+  tasks: {
+    type: [tasks],
+  },
 });
 
-const userModel = new mongoose.model("User", userSchema, "Users");
+const userModel = new mongoose.model("User", userSchema, "users");
 
 export default userModel;

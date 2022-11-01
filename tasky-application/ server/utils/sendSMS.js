@@ -1,30 +1,31 @@
-import twilio from "twilio";
-const accountSid = "ACe96535c674f4ea0b85b036aad3a0c7d3";
-const authToken = "c44db01c18dc9045e57a7ff92b687e38";
+import twilio from 'twilio';
+import config from "config";
+
+const { TWILIO_SID, TWILIO_TOKEN, TWILIO_NUMBER } = config.get("SEND_SMS");
+
+const accountSid = TWILIO_SID;
+const authToken = TWILIO_TOKEN;
 const client = new twilio(accountSid, authToken);
-let smsbody={
-    body :" This is the reminder",
-    to: '+919014828737'
-}
-async function sendsms (smsbody) {
+
+// let smsbody = 3eb5d53adb7b1e758ffeeec2f6972327{
+//     body: "this is a reminder",
+//     to: "+919014828737"
+// }
+async function sendSMS(smsbody) {
     try {
-       let message = await client.messages
+        let message = await client.messages
             .create({
                 body: smsbody.body,
-                from: '+18323468469',
+                from: TWILIO_NUMBER,
                 to: smsbody.to
             })
-            console.log(message.sid);
+        console.log(message.sid);
     } catch (error) {
         console.error(error)
     }
 }
-// sendsms(sms);
-export default sendsms;
- 
- 
-
-
-
-
-
+export default sendSMS;
+// sendSMS({
+//     body: `Thank you for Signing Up. Please click on the given link to verify your phone. http://192.168.68.133:5000/api/verify/mobile/`,
+//     to: "+919703534849"
+// })
