@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function AddTask({alert, showAlert}) {
+function AddTask({ alert, showAlert }) {
 
     const navigate = useNavigate();
 
@@ -58,9 +58,10 @@ function AddTask({alert, showAlert}) {
 
     return (
         <>
-            {/* {alert !== null && <h3 className={`alert-${alert.type}`}>{alert.msg}</h3>} */}
-            <center><h1>Add Task</h1>
-
+            <div className="addform">            {/* {alert !== null && <h3 className={`alert-${alert.type}`}>{alert.msg}</h3>} */}
+            <center>
+            <h1 style={{fontFamily:"cursive"}}>Add Task</h1>
+                   
                 <form onSubmit={onSubmitHandler}>
 
                     <input type="text" id="taskname" name="taskname" placeholder="Task Name" value={taskname} onChange={onChangeHandler} required /><br />
@@ -69,7 +70,10 @@ function AddTask({alert, showAlert}) {
 
                     <input type="submit" value="Add Task" />
                 </form>
-            </center>
+                <p style={{fontFamily:"cursive",fontSize:'20px',color:'orange'}}>Deadline: Morethan 30 min and Lessthan 30 Days</p>
+                </center>
+                </div>
+
         </>
     )
 }

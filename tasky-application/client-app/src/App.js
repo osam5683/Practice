@@ -1,33 +1,54 @@
 import React from 'react'
-import Navbar from './components/Navbar.js';
-import Body from './components/Body.js';
+
+import Navbar from './components/Navbar';
+import Body from './components/Body';
+
 import './App.css';
 import { Routes, Route } from "react-router-dom"
-import Signup from './components/Signup.js';
-import Login from './components/Login.js';
-import Dashbaord from './components/Dashboard.js';
-import Footer from './components/Footer.js';
-import AddTask from './components/Addtask.js';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import PrivateRoutes from './components/PrivateRoutes';
+
+import Signup from './components/Signup';
+import Login from './components/Login';
+import AddTask from './components/Addtask';
+import EditTask from './components/EditTask';
+import Dashboard from './components/Dashboard';
+import About from './components/About';
+import Footer from './components/Footer';
 
 function App() {
+
+  const [alert, setAlert] = useState(null);
+  const [taskData, settaskData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const showAlert = (data) => {
+    setAlert({
+      type: data.type,
+      msg: data.msg
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 4000)
+  }
   return (
     <>
        <Navbar />
-       
       <Routes>
-     
-        <Route path="/" element={<Body />} />
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashbaord />} />
-        <Route path='/AddTask' element={<AddTask/>}/>
-        
+      <Route path='/about' element={<About />} />
+        <Route path="/" element={<Body taskData={taskData} loading={loading} />} />
+        <Route path="/signup" element={<Signup alert={alert} showAlert={showAlert} />} />
+        <Route path="/login" element={<Login alert={alert} showAlert={showAlert} />} />
+        <Route element={<PrivateRoutes />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path='/addtask' element={<AddTask />} />
+        <Route path='/edittask' element={<EditTask />} />
+        </Route>
       </Routes>
       <Footer />
-      
     </>
-  );
-
+  );      
 }
 
 export default App;

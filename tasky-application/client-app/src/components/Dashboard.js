@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import clock from "./assets/clock.png";
 import tick from "./assets/tick.png";
-import Loading1 from "./assets/Loading1.gif";
+import Loading from "./assets/Loading1.gif";
 
 import Footer from './Footer';
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -31,7 +31,7 @@ function Dashboard(loading) {
         })
       } catch (error) {
         console.error(error.response.data)
-        navigate("/Login")
+        navigate("/login")
       }
     }
     verifyAuth();
@@ -57,7 +57,7 @@ function Dashboard(loading) {
   async function DeleteTask(id) {
     try {
       let token = JSON.parse(localStorage.getItem("token")).token
-      setTasks(tasks.filter((ele) => ele._id !== id ))
+      setTasks(tasks.filter((ele) => ele._id !== id))
       let data = await axios.delete(`/api/task/${id}`, {
         headers: {
           "auth-token": token
@@ -76,12 +76,12 @@ function Dashboard(loading) {
       {/* {loading && <Loading />} */}
 
       <center>
-        <h1 style={{ display: "inline", margin: "230px" }}>Dashboard</h1> <Link to="/AddTask" >Add Task</Link>
+        <h1 style={{ display: "inline", margin: "230px", color: "orange" ,fontFamily:"fantasy"}}>Dashboard</h1> <Link to="/AddTask" className='button' style={{ background: "orange", padding: "5px", marginBottom: "4px", borderRadius: "5px", color: 'white', border: 'white 1px solid' }} >Add Task</Link>
         <table id="dashboard" >
 
           <thead >
             <tr>
-              <th>Task ID</th>
+              <th>DeadLine</th>
               <th>Task Name</th>
               <th>Is Completed</th>
               <th>Edit/Delete</th>
@@ -94,12 +94,12 @@ function Dashboard(loading) {
                 // console.log(task.isCompleted)
 
                 return (<tr key={i}>
-                  <td>{task._id}</td>
+                  <td>{(new Date(task.deadline)).toLocaleString()}</td>
                   <td>{task.taskname}</td>
                   <td>{task.isCompleted ? <img style={{ width: "35px" }} src={tick} alt="Loading.." /> : <img style={{ width: "35px" }} src={clock} alt="Loading.." />}</td>
-                  
-                  <td><button type='button' onClick={() => navigating(task._id, task.taskname)}>Edit</button>
-                  <button onClick={() => DeleteTask(task._id)}>Delete</button></td>
+
+                  <td><button style={{cursor:"pointer"}} type='button' onClick={() => navigating(task._id, task.taskname)}>Edit</button>
+                    <button style={{cursor:"pointer"}} onClick={() => DeleteTask(task._id)}>Delete</button></td>
                 </tr>)
               })
             }
@@ -113,3 +113,4 @@ function Dashboard(loading) {
 }
 
 export default Dashboard;
+

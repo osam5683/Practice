@@ -1,12 +1,11 @@
-function Footer() {
+function Footer({ content }) {
+    let date = new Date().getFullYear();
     return (
-        <div className="footer">
-            <h5>
-                <centre>
-                    &copy; Copyright Code For India. All rights reserved.
-                </centre>
-            </h5>
-        </div>
+        <>
+            <div className="footer">
+                <h4> &copy; Copyrights. All Rights Reserved {content} {date}</h4>
+            </div>
+        </>
     )
 }
 

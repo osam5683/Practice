@@ -1,5 +1,5 @@
-import loading from "./assests/Loading1.gif";
-import tick from "../components/assests/tick.png";
+import loading from "./assets/Loading1.gif";
+import tick from "../components/assets/tick.png";
 
 
 function Loading() {
@@ -7,7 +7,7 @@ function Loading() {
         <>
             <center>
                 <img src={loading} alt="Loading.." />
-                
+                <img src={tick} alt="tick.." />
             </center>
         </>
     )

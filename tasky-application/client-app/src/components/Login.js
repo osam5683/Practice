@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom"
 
+
 function Login({ alert, showAlert }) {
 
   let navigate = useNavigate();
@@ -71,11 +72,11 @@ function Login({ alert, showAlert }) {
       <div className='flex2-box' >
 
         <div>
-           <form className='reg-form' onSubmit={onSubmitHandler}>
+          <form className='reg-form' onSubmit={onSubmitHandler}>
 
-            <h1 style={{color:"#006E7F",fontFamily:"cursive"}}>LOGIN</h1>
+            <h1 style={{ color:"purple", fontFamily:"inherit" }}>LOGIN</h1>
             {alert !== null && <h3 className={`alert-${alert.type}`}>{alert.msg}</h3>}
-          
+
             <input type="email" id="email" name="email" placeholder='example@email.com' value={email} onChange={onChangeHandler} required /><br />
             <input type="password" id="password" name="password" placeholder='Password' value={password} onChange={onChangeHandler} required /><br />
 
@@ -85,7 +86,7 @@ function Login({ alert, showAlert }) {
 
           </form>
         </div>
-        <img className="Anima" src={Anima} alt="task" />
+        <img className="Anima" src={Anima} style={{height:"350px"}}alt="task" />
       </div>
     </>
   )
